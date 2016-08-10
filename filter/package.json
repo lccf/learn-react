@@ -1,0 +1,38 @@
+{
+  "name": "banggo_source",
+  "version": "1.0.0",
+  "description": "banggo frontend source directory",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "typings install",
+    "start": "webpack-dev-server --inline --hot",
+    "build": "export NODE_ENV=production && webpack"
+  },
+  "keywords": [
+    "sass",
+    "react"
+  ],
+  "author": "leaf",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0",
+    "react-lite": "^0.15.14",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.10.1",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "file-loader": "^0.9.0",
+    "jade": "^1.11.0",
+    "jade-html-loader": "0.0.3",
+    "object-assign": "^4.1.0",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
