@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.10.1",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
