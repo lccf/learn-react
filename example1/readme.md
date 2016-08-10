@@ -2,7 +2,7 @@
 
 ## 创建项目及配置文件
 ```bash
-echo '{}' package.json
+echo '{}' > package.json
 # 安装react包
 npm install react react-dom redux react-redux redux-actions redux-thunk --save
 # 安装开发依赖包
@@ -140,4 +140,4 @@ index.html
 </html>
 ```
 
-启动 npm start
+启动 npm start,访问[http://localhost:8080](http://localhost:8080)查看效果
