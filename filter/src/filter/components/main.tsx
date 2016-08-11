@@ -1,13 +1,4 @@
 /// <reference path="../declare.d.ts" />
-/* --------------------------------------------------
- *   FileName: index.tsx
- *       Desc: 共用筛选组件
- *     Author: leaf
- *      Email: chenglifu@metersbonwe.com
- *    Version: 1.0.0
- * LastChange: 2016/07/05 15:56
- * --------------------------------------------------
- */
 // import library
 import * as React from 'react';
 import { connect } from 'react-redux';

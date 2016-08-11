@@ -23,28 +23,28 @@ import { cate, cateModel, filterItemModel, reducerModel } from './model';
 export default combineReducers({
   uiControl: combineReducers({
     visible: handleActions({
-      [ACTION_OK]: (state: any, action: Action) => false,
-      [ACTION_SHOW_PANEL]: (state: any, action: Action) => true,
-      [ACTION_HIDE_PANEL]: (state: any, action: Action) => false,
+      [ACTION_OK]: (state: any, action: Action<any>) => false,
+      [ACTION_SHOW_PANEL]: (state: any, action: Action<any>) => true,
+      [ACTION_HIDE_PANEL]: (state: any, action: Action<any>) => false,
     }, false),
     showPanel: handleActions({
-      [ACTION_SHOW_CATE]: (state: any, action: Action) => !action.payload.showCate,
-      [ACTION_HIDE_CATE]: (state: any, action: Action) => true,
-      [ACTION_SHOW_FILTER]: (state: any, action: Action) => false,
-      [ACTION_HIDE_FILTER]: (state: any, action: Action) => true,
-      [ACTION_UPDATE_FILTER]: (state: any, action: Action) => true,
+      [ACTION_SHOW_CATE]: (state: any, action: Action<any>) => !action.payload.showCate,
+      [ACTION_HIDE_CATE]: (state: any, action: Action<any>) => true,
+      [ACTION_SHOW_FILTER]: (state: any, action: Action<any>) => false,
+      [ACTION_HIDE_FILTER]: (state: any, action: Action<any>) => true,
+      [ACTION_UPDATE_FILTER]: (state: any, action: Action<any>) => true,
     }, true),
     expand: handleActions({
-      [ACTION_SHOW_FILTER]: (state: any, action: Action) => action.payload.code,
-      [ACTION_HIDE_FILTER]: (state: any, action: Action) => '',
-      [ACTION_UPDATE_FILTER]: (state: any, action: Action) => '',
+      [ACTION_SHOW_FILTER]: (state: any, action: Action<any>) => action.payload.code,
+      [ACTION_HIDE_FILTER]: (state: any, action: Action<any>) => '',
+      [ACTION_UPDATE_FILTER]: (state: any, action: Action<any>) => '',
     }, ''),
   }),
   data: combineReducers({
     cate: handleActions({
-      [ACTION_SHOW_CATE]: (state: any, action: Action) => assign({}, state, {visible: action.payload.showCate}), 
-      [ACTION_HIDE_CATE]: (state: any, action: Action) => assign({}, state, {visible: false, expandCateId: []}),
-      [ACTION_EXPAND_CATE]: (state: any, action: Action) => {
+      [ACTION_SHOW_CATE]: (state: any, action: Action<any>) => assign({}, state, {visible: action.payload.showCate}), 
+      [ACTION_HIDE_CATE]: (state: any, action: Action<any>) => assign({}, state, {visible: false, expandCateId: []}),
+      [ACTION_EXPAND_CATE]: (state: any, action: Action<any>) => {
         // let expandCateId: string[] = state.expandCateId;
         let expandCateId: string[] = state.expandCateId.filter( item => item != action.payload.cateId )
         // 如果没有展开
@@ -56,7 +56,7 @@ export default combineReducers({
         return assign({}, state, { expandCateId });
       },
       // 更新筛选面板
-      [ACTION_UPDATE_FILTER]: (state: any, action: Action) => {
+      [ACTION_UPDATE_FILTER]: (state: any, action: Action<any>) => {
         let expandCateId: string[] = state.expandCateId;
         let crumb = action.payload.data.crumb;
         if (crumb.length) {
@@ -66,13 +66,13 @@ export default combineReducers({
       }
     }, {}),
     crumb: handleActions({
-      ACTION_UPDATE_FILTER: (state: any, action: Action) => {
+      ACTION_UPDATE_FILTER: (state: any, action: Action<any>) => {
         let crumbItems = action.payload.data.crumb;
         return [...crumbItems];
       },
     }, {}),
     others: handleActions({
-      [ACTION_SHOW_FILTER]: (state: any, action: Action) => {
+      [ACTION_SHOW_FILTER]: (state: any, action: Action<any>) => {
         state = state.map((item: filterItemModel) => {
           if (item.data.code == action.payload.code) {
             item.visible = true;
@@ -84,7 +84,7 @@ export default combineReducers({
         })
         return [...state];
       },
-      [ACTION_UPDATE_FILTER]: (state: any, action: Action) => {
+      [ACTION_UPDATE_FILTER]: (state: any, action: Action<any>) => {
         state = action.payload.data.others.map((item: filterItemModel) => {
           item.visible = false;
           return item;
@@ -93,7 +93,7 @@ export default combineReducers({
       },
     }, []),
     request: handleActions({
-      [ACTION_UPDATE_FILTER]: (state: any, action: Action) => {
+      [ACTION_UPDATE_FILTER]: (state: any, action: Action<any>) => {
         return assign({}, action.payload.data.request);
       }
     }, {}),

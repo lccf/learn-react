@@ -58,7 +58,7 @@ var config = {
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
   externals: {
-    "BGSite": "BGSite"
+    // "BGSite": "BGSite"
     // "react": "React",
     // "react-dom": "ReactDOM"
   },

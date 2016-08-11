@@ -1,5 +1,3 @@
-import * as BGSite from 'BGSite';
 import FilterApp from './app';
 
-
-BGSite.component.CommonFilter = FilterApp;
+BGSite.component.Filter = FilterApp;

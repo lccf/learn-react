@@ -39,16 +39,8 @@ const logger = store => next => action => {
 // import util
 // import { externalCallback } from './util';
 // let initialState = CommonFilterDataTransform(CommonFilterData as filterRequestModel, externalCallback);
-// let requestUrl = `a_{cate}_{price}_{brand}_{color}_a_a_a_a_a_a_{性别97|季节85|场合3|系列86}.shtml`
 // const store = createStoreWithMiddleware(CommonFilterReduces, initialState);
 // console.log(initialState);
-
-// render(
-//   <Provider store={ store }>
-//     <CommonFilter />
-//   </Provider>,
-//   document.getElementById('content')
-// );
 
 export default class CommonFilterApp {
   private store;

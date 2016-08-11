@@ -90,7 +90,7 @@ export type filterRequestModel = {
 }
 export type updateFilterMiddlewareModel = (dispatch: any, data: filterRequestModel, externalCallback: externalCallbackModel) => any;
 // 外部扩展api 模型
-export type externalCallbackModel = (extendAction: string, data: any, action: Action | updateFilterMiddlewareModel) => any;
+export type externalCallbackModel = (extendAction: string, data: any, action: Action<any> | updateFilterMiddlewareModel) => any;
 
 export type uiControlModel = {
   visible: boolean,

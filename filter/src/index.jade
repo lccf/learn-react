@@ -7,22 +7,15 @@ html
     title index
     link(rel="stylesheet" href=cssLinkUrl)
     script.
-      var staticDomain = "http://s.banggo.com/pub1";
-      var assetsTime = "201606281047";
-      // 统计用途appName -> bgwap
-      var appName = "bgwap";
       // 自适应脚本
       !function(){function e(){var e=n.getBoundingClientRect().width;e/m>640&&(e=640*m);var t=e/16;n.style.fontSize=t+"px",d.rem=i.rem=t}var t,i=window,a=window.lib||(window.lib={}),r=i.document,n=r.documentElement,o=r.querySelector('meta[name="viewport"]'),l=r.querySelector('meta[name="flexible"]'),m=0,s=0,d=a.flexible||(a.flexible={});if(o){var p=o.getAttribute("content").match(/initial\-scale=([\d\.]+)/);p&&(s=parseFloat(p[1]),m=parseInt(1/s))}else if(l){var c=l.getAttribute("content");if(c){var u=c.match(/initial\-dpr=([\d\.]+)/),f=c.match(/maximum\-dpr=([\d\.]+)/);u&&(m=parseFloat(u[1]),s=parseFloat((1/m).toFixed(2))),f&&(m=parseFloat(f[1]),s=parseFloat((1/m).toFixed(2)))}}if(!m&&!s){var v=(i.navigator.appVersion.match(/android/gi),i.navigator.appVersion.match(/iphone/gi)),h=i.devicePixelRatio;m=v?h>=3&&(!m||m>=3)?3:h>=2&&(!m||m>=2)?2:1:1,s=1/m}if(n.setAttribute("data-dpr",m),!o)if(o=r.createElement("meta"),o.setAttribute("name","viewport"),o.setAttribute("content","initial-scale="+s+", maximum-scale="+s+", minimum-scale="+s+", user-scalable=no"),n.firstElementChild)n.firstElementChild.appendChild(o);else{var x=r.createElement("div");x.appendChild(o),r.write(x.innerHTML)}i.addEventListener("resize",function(){clearTimeout(t),t=setTimeout(e,300)},!1),i.addEventListener("pageshow",function(i){i.persisted&&(clearTimeout(t),t=setTimeout(e,300))},!1),e(),d.dpr=i.dpr=m,d.refreshRem=e,d.rem2px=function(e){var t=parseFloat(e)*this.rem;return"string"==typeof e&&e.match(/rem$/)&&(t+="px"),t},d.px2rem=function(e){var t=parseFloat(e)/this.rem;return"string"==typeof e&&e.match(/px$/)&&(t+="rem"),t}}();
   body
     a#filterButton(href="javascript:;") 筛选
-    #content
-    //- script(src="./node_modules/react-lite/dist/react-lite.min.js")
-    //- script(src="./node_modules/react/dist/react.min.js")
-    //- script(src="./node_modules/react-dom/dist/react-dom.min.js")
-    script(src="./src/css/fastUtil.js")
+    #container
+    script(src="./js/mockData.js")
+    script(src="./js/page.js")
     script(src="./dist/react-library.js")
-    //- script(src="./react/dist/data.js")
     script(src="./dist/filter.js")
-    script(src="./src/css/mockData.js")
-    script(src="./src/css/page.js")
-    //- <script src="//localhost:8080/webpack-dev-server.js"></script>
+    script.
+      BGSite.initComponent();
+    
