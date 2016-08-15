@@ -1,10 +1,10 @@
 # filter
 ## 源码使用说明
 进入到filter目录下：
-1.执行npm install安装package依赖包
-2.执行npm start运行项目
-3.浏览器访问 [http://localhost:8080](http://localhost:8080)
-4.执行npm run build可打包js文件
+- 执行npm install安装package依赖包
+- 执行npm start运行项目
+- 浏览器访问 [http://localhost:8080](http://localhost:8080)
+- 执行npm run build可打包js文件
 
 ## 项目结构
 ```
