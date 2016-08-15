@@ -4,7 +4,7 @@ var config = {
   // entry: ["./react/index.tsx",  "file?name=index.html!jade-html!./react/index.jade"],
   entry: {
     "filter": ["./src/index.ts", "file?name=index.html!jade-html!./src/index.jade"],
-    "react-library": ['react', 'redux', 'react-redux', 'react-dom', 'redux-actions', 'redux-thunk'],
+    "react-library": ['react', 'redux', 'react-redux', 'react-dom', 'redux-actions', 'redux-thunk', 'object-assign'],
     // data: ['./react/MockData.ts'],
   },
   output: {

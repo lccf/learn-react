@@ -1,6 +1,12 @@
-# react example1
+# basic
+## 源码使用说明
+进入到basic目录下：
+1.执行npm install安装package依赖包
+2.执行npm start运行项目
+3.浏览器访问 [http://localhost:8080](http://localhost:8080)
 
-## 创建项目及配置文件
+## 项目创建过程
+
 ```bash
 echo '{}' > package.json
 # 安装react包

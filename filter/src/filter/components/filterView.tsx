@@ -33,12 +33,14 @@ class FilterView extends React.Component<FilterViewProps, any> {
     }
     for (let value of itemData.value) {
       if (value) {
-        values.push(value);
+        if (values.length < 6) {
+          values.push(value);
+        }
         if (value.code == selected) {
           selectedName = value.name;
         }
       }
-      if (values.length >= 6) break;
+      if (values.length >= 6 && selectedName) break;
     }
 
     return (
