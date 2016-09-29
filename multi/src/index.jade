@@ -5,12 +5,16 @@ html
     meta(name="viewport" content="width=device-width,initial-scale=1.0")
     title index
   body
-    #headerText
+    #headerText(data-react-component="true" data-config="component=Text&dataLabel=headerText")
     #container
       h1 container
-    #footerText
+    #footerText(data-react-component="true" data-config="component=Text&dataLabel=footerText")
     - var bowerPath = '/bower_components'
-    script(src="#{bowerPath}/underscore/underscore.js")
-    script(src="#{bowerPath}/zepto/zepto.js")
-    script(src="#{bowerPath}/ndoojs/dist/ndoo_all.js")
-    script(src="./dist/bundle.js")
+    #scriptArea(style="display: none")
+      div(data-nblock-id="block/textBlock")
+      script(src="#{bowerPath}/underscore/underscore.js")
+      script(src="#{bowerPath}/zepto/zepto.js")
+      script(src="#{bowerPath}/ndoojs/dist/ndoo_all.js")
+      script(src="./dist/bundle.js")
+      script.
+        ndoo.init('home/index');

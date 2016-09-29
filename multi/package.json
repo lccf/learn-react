@@ -2,7 +2,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --hot",
     "build": "webpack",
-    "prepublish": "typings install && bower install"
+    "postinstall": "typings install && bower install"
   },
   "dependencies": {
     "react": "^15.3.2",

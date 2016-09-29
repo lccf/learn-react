@@ -8,12 +8,12 @@ import { Provider, connect } from 'react-redux';
 import Text from './text';
 
 export { default as Text } from './text';
-export { default as default } from './reducer';
+export { default as TextReducer } from './reducer';
 
 // import reducer from './reducer';
 // export default reducer;
 
-export let render = function (rootEl: HTMLElement, store: any, position: string) {
+export let TextRender = function (rootEl: HTMLElement, store: any, position: string) {
   let TextComponent = connect((state: {[id: string]: string}) => {
     let text: string = state[position];
     let result = {
