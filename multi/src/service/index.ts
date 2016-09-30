@@ -1,2 +1,2 @@
-export { default as ComponentService} from './componentService';
-export { default as Util } from './utilService';
+export * from './componentService';
+export * from './utilService';

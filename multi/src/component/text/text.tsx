@@ -10,7 +10,7 @@ interface TextProps {
     data: {
         text: string;
     };
-    position: string;
+    dataLabel: string;
     dispatch: any;
 }
 
@@ -20,20 +20,20 @@ class Text extends React.Component<TextProps, any> {
     }
 
     updateHandler() {
-        let { dispatch, position } = this.props;
+        let { dispatch, dataLabel } = this.props;
         let input = this.refs['myInput'] as HTMLInputElement;
-        this.props.dispatch(actionUpdate(input.value, position));
+        dispatch(actionUpdate(input.value, dataLabel));
     }
 
     render() {
-        const { data } = this.props;
+        const { text } = this.props.data;
         return (
             <div>
             <p>
-                <input ref="myInput" type="text" defaultValue={data.text} />
+                <input ref="myInput" type="text" defaultValue={text} />
                 <button onClick={ () => this.updateHandler() }>update</button>
             </p>
-            <h3>text: {data.text}</h3>
+            <h3>text: {text}</h3>
             </div>
         );
     }

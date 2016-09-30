@@ -10,71 +10,80 @@ import * as Component from '../component';
 
 use(Util);
 
+interface componentParam {
+  dataLabel: string,
+  componentName: string,
+  [key: string]: string,
+};
+
+interface componentData extends componentParam {
+  elem: any,
+}
+
+const logger = store => next => action => {
+  console.log('dispatching', action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  return result
+}
+
 @Ndoo.Component('common.componentService', Ndoo.RegType.Service, true)
 export default class ComponentService {
-  constructor() {
-
-  }
-  commit($components: any) {
+  /**
+   * 创建组件
+   */
+  createComponent($components: any) {
     let util = ndoo.service<typeof Util>('common.util');
-    let temp: {
-      elem: any,
-      dataLabel: string,
-      component: string,
-      param: { [key: string]: string },
-    }[] = [];
+    let temp: componentData[] = [];
     for (let item of $components) {
-      let param:{
-        dataLabel?: string,
-        component?: string,
-        [key: string]: string,
-      } = util.formatUrlParam($(item).data('config') || '');
+      let param = util.formatUrlParam($(item).data('component') || '') as componentParam;
       let label = param.dataLabel;
       label = label.replace('[id]', ndoo.getPk());
-      temp.push({
-        elem: item,
-        dataLabel: label,
-        component: param.component,
-        param: param
-      });
+      temp.push(Object.assign({}, param, { elem: item, dataLabel: label}));
     }
 
     let store = this.createStore(temp);
-    this.createComponent(temp, store);
+    this.renderComponent(temp, store);
     // console.log(store.getState());
   }
-  createComponent(config, store) {
+  /**
+   * 渲染组件
+   */
+  renderComponent(config: componentData[], store) {
     for (let item of config) {
-      Component[`${item.component}Render`](item.elem, store, item.dataLabel);
+      Component.render(item.elem, Component[`${item.componentName}`], store, item.dataLabel);
     }
   }
-  createStore(config) {
+  /**
+   * 创建store
+   */
+  createStore(config: componentData[]) {
     let reducerConfig: {
       [key: string]: any;
     } = {};
     let initialState = {};
-    const logger = store => next => action => {
-      console.log('dispatching', action)
-      let result = next(action)
-      console.log('next state', store.getState())
-      return result
-    }
     for (let item of config) {
-      reducerConfig[item.dataLabel] = Component[item.component+'Reducer'](item.dataLabel);
+      reducerConfig[item.dataLabel] = Component[item.componentName+'Reducer'](item.dataLabel);
     }
     let createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
     let reducer = combineReducers(reducerConfig);
     return createStoreWithMiddleware(reducer, initialState);
   }
-  scan(rootEl?: HTMLElement) {
-    let $elem = $('[data-react-component]', rootEl ? rootEl : document.body);
+  /**
+   * 初始化组件
+   */
+  initComponent(rootEl?: HTMLElement) {
+    let $elem = $('[data-component]', rootEl ? rootEl : document.body);
     let $components = $elem.slice(0).filter((item) => {
       let $el = $(item);
       return $el.data('init') == 'inited' ? false : true;
     });
-    this.commit($components);
+    this.createComponent($components);
   }
-  static _instance: ComponentService;
+  /**
+   * 单例入口
+   */
+  private static _instance: ComponentService;
   static init() {
     if (!this._instance) {
       this._instance = new ComponentService();
