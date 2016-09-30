@@ -3,20 +3,29 @@ import Ndoo from '../library/ndoo_ts';
 
 @Ndoo.Component('common.util', Ndoo.RegType.Service, true)
 export default class Util {
-  static formatUrlParam(url: string = ''): any {
-    let paramObject = {}
-    let urlparam: any;
+  /**
+   * 格式化url参数
+   */
+  static formatUrlParam(url: string = ''): {[key: string]: string} {
+    let paramObject: any = {}
+    let urlParam: string[];
     url = url.replace(/^\?/, '');
     if (url && url.length > 1) {
-      urlparam = url.split('&');
+      urlParam = url.split('&');
     } else {
-      urlparam = [];
+      urlParam = [];
     }
-    for (let item of urlparam) {
+    for (let item of urlParam) {
       let [key, value] = item.split('=');
       if (!key) continue;
       key = key.replace(/\[\]$/, '');
-      value = value ? value.replace(/%u\w{4}/g, (char) => unescape(char)) : '';
+      if (value) {
+        value = value.replace(/%u\w{4}/g, (char) => unescape(char));
+        value = decodeURIComponent(value);
+      }
+      else {
+        value = '';
+      }
       if (_.has(paramObject, key)) {
         if (!_.isArray(paramObject[key])) {
           paramObject[key] = [paramObject[key]];
