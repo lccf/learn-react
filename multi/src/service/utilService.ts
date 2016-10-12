@@ -38,4 +38,10 @@ export default class Util {
     }
     return paramObject;
   }
+
+  static externalCallback(dataLabel: string, externalAction: string, data: any, action: any) {
+    return (dispatch: Function) => {
+      dispatch(action);
+    }
+  }
 }

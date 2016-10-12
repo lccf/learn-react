@@ -11,9 +11,10 @@ import {
 interface CounterProps {
   data: {
     count: number;
-  },
-  dataLabel: string,
-  dispatch: any,
+  };
+  externalCallback: any;
+  dataLabel: string;
+  dispatch: any;
 }
 
 export default class Counter extends React.Component<CounterProps, any> {

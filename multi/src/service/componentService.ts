@@ -68,8 +68,10 @@ export default class ComponentService {
   createStore(config: componentData[]) {
     let reducerConfig: {
       [key: string]: any;
-    } = {};
-    let initialState = {};
+    } = { externalCallback: (state: any, action: any) => state || {} };
+    let initialState = {
+      externalCallback: Util.externalCallback
+    };
     for (let item of config) {
       reducerConfig[item.dataLabel] = Component[item.componentName+'Reducer'](item.dataLabel);
     }

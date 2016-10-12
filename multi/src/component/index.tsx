@@ -9,6 +9,7 @@ export * from './counter';
 export const render = function (rootEl: HTMLElement, component: any, store: any, dataLabel: string): void {
   let Component = connect((state: any) => ({
     data: state[dataLabel],
+    externalCallback: state['externalCallback'],
     dataLabel
   }))(component);
 

@@ -3,6 +3,7 @@ import { createStore, combineReducers, applyMiddleware, Store, Reducer } from 'r
 import thunk from 'redux-thunk';
 
 import Ndoo from '../library/ndoo_ts';
+import Util from './utilService';
 
 const logger = store => next => action => {
   console.log('dispatching', action)
@@ -24,7 +25,7 @@ export default class ReduxService {
   /**
    * 全局reducer配置
    */
-  private _reducerConfig: { [key: string]: any } = {};
+  private _reducerConfig: { [key: string]: any } = { externalCallback: (state: any, action: any) => state || {} };
   get reducerConfig() {
     return this._reducerConfig;
   }
@@ -43,7 +44,10 @@ export default class ReduxService {
     
     let newReducer = combineReducers(this._reducerConfig);
     if (!this._store) {
-      let initialState = {};
+      let initialState = {
+        externalCallback: Util.externalCallback
+      };
+    
       let createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
       this._store = createStoreWithMiddleware(newReducer, initialState);
     }

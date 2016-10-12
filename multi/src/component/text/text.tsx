@@ -10,6 +10,7 @@ interface TextProps {
     data: {
         text: string;
     };
+    externalCallback: any;
     dataLabel: string;
     dispatch: any;
 }
