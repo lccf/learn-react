@@ -5,15 +5,20 @@ html
     meta(name="viewport" content="width=device-width,initial-scale=1.0")
     title index
   body
-    #headerText(data-component="componentName=Text&dataLabel=headerText")
-    #counterBox1(data-component="componentName=Counter&dataLabel=counter[id]")
-    #counterBox2(data-component="componentName=Counter&dataLabel=counter[id]")
-    // #container
-      h1 container
-    #footerText(data-component="componentName=Text&dataLabel=footerText")
+    .staticComponent(data-nblock-id="block/staticComponentBlock")
+      .headerText(data-component="componentName=Text&dataLabel=headerText")
+      .counterBox1(data-component="componentName=Counter&dataLabel=counter[id]")
+      .counterBox2(data-component="componentName=Counter&dataLabel=counter[id]")
+      .footerText(data-component="componentName=Text&dataLabel=footerText")
+    
+    .dynamicComponent
+      .headerText(data-nblock-id="block/dynamicComponent?componentName=Text&dataLabel=headerText")
+      .counterBox1(data-nblock-id="block/dynamicComponent?componentName=Counter&dataLabel=counter[id]")
+      .counterBox2(data-nblock-id="block/dynamicComponent?componentName=Counter&dataLabel=counter[id]")
+      .footerText(data-nblock-id="block/dynamicComponent?componentName=Text&dataLabel=footerText")
+
     - var bowerPath = '/bower_components'
     #scriptArea(style="display: none")
-      div(data-nblock-id="block/textBlock")
       script(src="#{bowerPath}/underscore/underscore.js")
       script(src="#{bowerPath}/zepto/zepto.js")
       script(src="#{bowerPath}/ndoojs/dist/ndoo_all.js")

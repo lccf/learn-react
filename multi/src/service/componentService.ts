@@ -30,6 +30,14 @@ const logger = store => next => action => {
 @Ndoo.Component('common.componentService', Ndoo.RegType.Service, true)
 export default class ComponentService {
   /**
+   * store对象
+   */
+  store: Store<{[key: string]: any}>;
+  /**
+   * reducer配置
+   */
+  reducerConfig: {[key: string]: any};
+  /**
    * 创建组件
    */
   createComponent($components: any) {
@@ -42,8 +50,8 @@ export default class ComponentService {
       temp.push(Object.assign({}, param, { elem: item, dataLabel: label}));
     }
 
-    let store = this.createStore(temp);
-    this.renderComponent(temp, store);
+    this.store = this.createStore(temp);
+    this.renderComponent(temp, this.store);
     // console.log(store.getState());
   }
   /**
@@ -65,6 +73,7 @@ export default class ComponentService {
     for (let item of config) {
       reducerConfig[item.dataLabel] = Component[item.componentName+'Reducer'](item.dataLabel);
     }
+    this.reducerConfig = reducerConfig;
     let createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
     let reducer = combineReducers(reducerConfig);
     return createStoreWithMiddleware(reducer, initialState);

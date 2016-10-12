@@ -15,7 +15,6 @@ export default class DynamicComponent {
         let label = (<string>dataLabel).replace('[id]', ndoo.getPk());
         let reduxService = ndoo.service<ReduxService>('common.reduxService');
         let store = reduxService.addReducer(label, Component[`${<string>componentName}Reducer`](label));
-        // console.log(store.getState());
         Component.render(elem, Component[<string>componentName], store, label);
     }
 }

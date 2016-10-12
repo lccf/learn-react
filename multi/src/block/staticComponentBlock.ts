@@ -5,11 +5,10 @@ import Ndoo from '../library/ndoo_ts';
 import use from '../library/use';
 
 import ComponentService from '../service/componentService';
-
 use(ComponentService);
 
-@Ndoo.Component('block.textBlock', Ndoo.RegType.Block, true)
-export default class TextBlock {
+@Ndoo.Component('block.staticComponentBlock', Ndoo.RegType.Block, true)
+export default class StaticComponentBlock {
   static init(elem: HTMLElement, param: string) {
     let componentService = ndoo.service<ComponentService>('common.componentService');
     componentService.initComponent();

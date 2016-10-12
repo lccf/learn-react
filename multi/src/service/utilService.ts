@@ -6,7 +6,7 @@ export default class Util {
   /**
    * 格式化url参数
    */
-  static formatUrlParam(url: string = ''): {[key: string]: string} {
+  static formatUrlParam(url: string = ''): {[key: string]: string | string[]} {
     let paramObject: any = {}
     let urlParam: string[];
     url = url.replace(/^\?/, '');
