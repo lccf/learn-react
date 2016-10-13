@@ -1,9 +1,12 @@
 /// <reference path="../declare/index.d.ts" />
 import { createStore, combineReducers, applyMiddleware, Store, Reducer } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 
 import Ndoo from '../library/ndoo_ts';
 import Util from './utilService';
+
+import rootSaga from './sagas';
 
 const logger = store => next => action => {
   console.log('dispatching', action)
@@ -11,6 +14,8 @@ const logger = store => next => action => {
   console.log('next state', store.getState())
   return result
 }
+
+const sagaMiddleware = createSagaMiddleware();
 
 @Ndoo.Component('common.reduxService', Ndoo.RegType.Service, true)
 export default class ReduxService {
@@ -47,9 +52,9 @@ export default class ReduxService {
       let initialState = {
         externalCallback: Util.externalCallback
       };
-    
-      let createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
+      let createStoreWithMiddleware = applyMiddleware(thunk, logger, sagaMiddleware)(createStore);
       this._store = createStoreWithMiddleware(newReducer, initialState);
+      sagaMiddleware.run(rootSaga);
     }
     else {
       this._store.replaceReducer(newReducer);

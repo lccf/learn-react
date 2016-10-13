@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {
   actionIncrement,
   actionDecrement,
+  actionIncrementAsync,
 } from './actions';
 
 interface CounterProps {
@@ -28,6 +29,7 @@ export default class Counter extends React.Component<CounterProps, any> {
         <span>{ count }</span>
         <button onClick={ () => dispatch(actionIncrement(dataLabel)) }>Increment</button>
         <button onClick={ () => dispatch(actionDecrement(dataLabel)) }>Decrement</button>
+        <button onClick={ ()=> dispatch(actionIncrementAsync(dataLabel)) }>Increment Async</button>
       </div>
     );
   }
