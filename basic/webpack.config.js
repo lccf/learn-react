@@ -1,3 +1,5 @@
+let htmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     entry: "./src/index.ts",
     output: {
@@ -24,8 +26,14 @@ module.exports = {
         ]
     },
 
+    plugins: [
+        new htmlWebpackPlugin({
+            title: "Hello React!"
+        })
+    ],
+
     externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+        // "react": "React",
+        // "react-dom": "ReactDOM"
     },
 };
