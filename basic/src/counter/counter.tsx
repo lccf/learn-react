@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 import * as React from 'react';
 
 interface CounterProps {
@@ -34,7 +33,7 @@ class Counter extends React.Component<CounterProps, CounterProps> {
         return (
             <div style={ {transform: 'scale(1.1)', marginTop: 100, marginLeft: 200} }>
                 <h3>react counter</h3>
-                <input value={ count } readOnly />
+                <input value={ count.toString() } readOnly />
                 <button onClick={ () => this.increment() }>+</button>
                 <button onClick={ () => this.decrement() }>-</button>
                 <button onClick={ () => this.asyncIncrement() }>async increment</button>

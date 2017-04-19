@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { actionIncrement, actionDecrement, actionSyncIncrement } from './actions';
@@ -18,7 +17,7 @@ class Counter extends React.Component<CounterProps, any> {
         return (
             <div style={ {transform: 'scale(1.2)', marginTop: 100, marginLeft: 200} }>
                 <h3>react counter with redux</h3>
-                <input value={ count } readOnly />
+                <input value={ count.toString() } readOnly />
                 <button onClick={ () => dispatch(actionIncrement()) }>+</button>
                 <button onClick={ () => dispatch(actionDecrement()) }>-</button>
                 <button onClick={ () => dispatch(actionSyncIncrement())}>sync increment</button>

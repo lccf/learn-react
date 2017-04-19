@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 import { Action, createAction } from 'redux-actions';
 
 export const ACTION_INCREMENT = 'ACTION_INCREMENT';
