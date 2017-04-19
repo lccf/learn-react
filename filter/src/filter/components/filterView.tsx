@@ -1,5 +1,3 @@
-/// <reference path="../declare.d.ts" />
-
 // import library
 import * as React from 'react';
 import * as Redux from 'redux';
@@ -45,7 +43,7 @@ class FilterView extends React.Component<FilterViewProps, any> {
 
     return (
       <li key={ itemData.code }>
-        <h5 className={ itemData.code } onClick={ () => dispatch(actionShowFilter(itemData.code)) }>
+        <h5 className={ itemData.code.toString() } onClick={ () => dispatch(actionShowFilter(itemData.code)) }>
           { itemData.name }&nbsp;<i className="wap_icon_forward"></i>
           <label className="itemSelected">{ selectedName }</label>
           <em>全部</em>

@@ -1,4 +1,3 @@
-/// <reference path="../declare.d.ts" />
 // import library
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -61,7 +60,7 @@ class CatePanel extends React.Component<CatePanelProps, any> {
             return (
                 [<li  key={ item.cateId } style={ {display: showAll} }>
                     <h5 style={ {position: "relative"} } name="cid" 
-                        onClick={ () => dispatch(actionExpandCate(item.cateId, item.level)) }
+                        onClick={ () => dispatch(actionExpandCate(item.cateId.toString(), item.level)) }
                         className={ showElem == 'block' ? 'dt_open' : null }>
                         { item.cateName }
                     </h5>
@@ -92,7 +91,7 @@ class CatePanel extends React.Component<CatePanelProps, any> {
                 return ([<li style={ {display: "block"} } key={ item.cateId }>
                     <h5
                         style={ {position: "relative"} }
-                        onClick={ () => dispatch(actionExpandCate(item.cateId, item.level)) }
+                        onClick={ () => dispatch(actionExpandCate(item.cateId.toString(), item.level)) }
                         className={ showAll == 'block' ? 'dt_open': null}
                     >{ item.cateName }</h5>
                 </li>, <li className="sub_cate" style={ {display: showAll} }><ul>

@@ -1,4 +1,3 @@
-/// <reference path="../declare.d.ts" />
 import * as React from 'react';
 import { actionHideFilter, actionUpdateFilter, ACTION_UPDATE_FILTER, ACTION_CLEAR_FILTER } from '../actions';
 import { filterItemModel, requestInfoModel, externalCallbackModel, commonProps } from '../model';

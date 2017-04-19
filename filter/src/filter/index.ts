@@ -1,7 +1,7 @@
-export { default as Filter } from './components/main.tsx';
-export { default as FilterView } from './components/filterView.tsx';
-export { default as CatePanel } from './components/catePanel.tsx';
-export { default as FilterPanel } from './components/filterPanel.tsx';
+export { default as Filter } from './components/main';
+export { default as FilterView } from './components/filterView';
+export { default as CatePanel } from './components/catePanel';
+export { default as FilterPanel } from './components/filterPanel';
 
 export * from './actions';
 export * from './model';

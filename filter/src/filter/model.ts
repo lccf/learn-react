@@ -1,4 +1,3 @@
-/// <reference path="./declare.d.ts" />
 import { Action } from 'redux-actions';
 export type cate = {
   cateId: number,

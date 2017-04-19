@@ -1,4 +1,3 @@
-/// <reference path="./declare.d.ts" />
 import { createAction } from 'redux-actions';
 import { filterRequestModel, externalCallbackModel } from './model';
 // panel
