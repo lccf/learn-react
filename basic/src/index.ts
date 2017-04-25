@@ -1,3 +1,4 @@
+import './style';
 import render from './hello';
 // import render from './counter';
 // import render from './counter-redux';
