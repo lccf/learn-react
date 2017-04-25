@@ -5,6 +5,8 @@ import {
   View, ViewStyle
 } from 'react-native';
 
+import { Hello } from './components/index';
+
 interface Props {}
 
 interface State {}
@@ -16,9 +18,7 @@ export default class App extends Component<Props, State> {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit src/index.ios.tsx
-        </Text>
+        <Hello style={ styles.instructions } text="To get started, edit src/index.ios.tsx" />
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
