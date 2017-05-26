@@ -1,7 +1,7 @@
 /// <reference path="../declare/index.d.ts" />
 import { createStore, combineReducers, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
-import Ndoo from '../library/ndoo_ts';
+import * as Ndoo from 'ndoojs';
 import use from '../library/use';
 
 import ComponentService from '../service/componentService';

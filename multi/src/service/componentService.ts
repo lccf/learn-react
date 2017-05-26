@@ -2,9 +2,9 @@
 // import { render as TextRender, default as TextReducer } from './text';
 import { createStore, combineReducers, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
+import * as Ndoo from 'ndoojs';
 
 import use from '../library/use';
-import Ndoo from '../library/ndoo_ts';
 import Util from './utilService';
 import * as Component from '../component';
 

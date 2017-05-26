@@ -2,8 +2,8 @@
 import { createStore, combineReducers, applyMiddleware, Store, Reducer } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
+import * as Ndoo from 'ndoojs';
 
-import Ndoo from '../library/ndoo_ts';
 import Util from './utilService';
 
 import rootSaga from './sagas';

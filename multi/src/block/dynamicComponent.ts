@@ -1,5 +1,5 @@
 /// <reference path="../declare/index.d.ts" />
-import Ndoo from '../library/ndoo_ts';
+import * as Ndoo from 'ndoojs';
 import use from '../library/use';
 
 import ReduxService from '../service/reduxService';

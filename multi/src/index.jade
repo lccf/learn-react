@@ -18,10 +18,11 @@ html
       .footerText(data-nblock-id="block/dynamicComponent?componentName=Text&dataLabel=footerText")
 
     - var bowerPath = '/bower_components'
+    - var nodePath = '/node_modules'
     #scriptArea(style="display: none")
       script(src="#{bowerPath}/underscore/underscore.js")
       script(src="#{bowerPath}/zepto/zepto.js")
-      script(src="#{bowerPath}/ndoojs/dist/ndoo_all.js")
+      script(src="#{nodePath}/ndoojs/js/ndoo.js")
       script(src="./dist/bundle.js")
       script.
         ndoo.init('home/index');

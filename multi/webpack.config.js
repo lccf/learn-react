@@ -24,8 +24,10 @@ module.exports = {
         ]
     },
 
-    // externals: {
-    //     "react": "React",
-    //     "react-dom": "ReactDOM"
-    // },
+    externals: {
+        // "react": "React",
+        // "react-dom": "ReactDOM"
+        "ndoojs": "ndoo",
+        "zepto": "Zepto"
+    },
 };

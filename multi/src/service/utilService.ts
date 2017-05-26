@@ -1,6 +1,5 @@
 /// <reference path="../declare/index.d.ts" />
-import Ndoo from '../library/ndoo_ts';
-
+import * as Ndoo from 'ndoojs';
 @Ndoo.Component('common.util', Ndoo.RegType.Service, true)
 export default class Util {
   /**
