@@ -2,7 +2,7 @@
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server --inline --hot",
     "build": "webpack",
-    "postinstall": "typings install && bower install"
+    "postinstall": "bower install"
   },
   "dependencies": {
     "react": "^15.3.2",
@@ -19,7 +19,6 @@
     "jade-html-loader": "^0.0.3",
     "ndoojs": "github:ndoojs/ndoojs#2.0.0rc2",
     "redux-saga": "^0.12.0",
-    "typings": "^1.4.0",
     "webpack": "^1.13.2",
     "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "^1.16.1"
