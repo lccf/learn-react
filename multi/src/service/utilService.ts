@@ -1,5 +1,6 @@
-/// <reference path="../declare/index.d.ts" />
 import * as Ndoo from 'ndoojs';
+import * as _ from 'underscore';
+
 @Ndoo.Component('common.util', Ndoo.RegType.Service, true)
 export default class Util {
   /**

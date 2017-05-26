@@ -1,4 +1,3 @@
-/// <reference path="./declare.d.ts" />
 import { Action, createAction } from 'redux-actions';
 
 export const ACTION_UPDATE = 'ACTION_UPDATE';

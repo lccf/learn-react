@@ -1,4 +1,3 @@
-/// <reference path="./declare.d.ts" />
 import { combineReducers } from 'redux';
 import { Action, handleActions } from 'redux-actions';
 

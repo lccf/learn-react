@@ -1,4 +1,3 @@
-/// <reference path="../declare/index.d.ts" />
 import { createStore, combineReducers, applyMiddleware, Store, Reducer } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';

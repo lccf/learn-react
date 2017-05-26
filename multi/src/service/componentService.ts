@@ -1,4 +1,3 @@
-/// <reference path="../declare/index.d.ts" />
 // import { render as TextRender, default as TextReducer } from './text';
 import { createStore, combineReducers, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';

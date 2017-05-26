@@ -1,4 +1,3 @@
-/// <reference path="../declare/index.d.ts" />
 import { takeEvery, delay } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 

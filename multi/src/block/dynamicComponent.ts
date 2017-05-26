@@ -1,4 +1,3 @@
-/// <reference path="../declare/index.d.ts" />
 import * as Ndoo from 'ndoojs';
 import use from '../library/use';
 
