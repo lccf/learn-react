@@ -1,0 +1,22 @@
+{
+  "name": "react multi component example",
+  "description": "",
+  "main": "",
+  "authors": [
+    "leaf <leftcold@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ndoojs": "ndoojs/ndoojs#2cbba86",
+    "underscore": "^1.8.3",
+    "zepto": "^1.1.6"
+  }
+}
