@@ -1,7 +1,9 @@
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    entry: ["./src/index.ts", "file?name=index.html!jade-html!./src/index.jade"],
+    entry: "./src/index.ts",
     output: {
-        filename: "./dist/bundle.js",
+        filename: "./dist/bundle.js"
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -9,25 +11,34 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js", ".json"]
     },
 
     module: {
-        loaders: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
-            { test: /\.tsx?$/, loader: "awesome-typescript-loader" }
-        ],
-
-        preLoaders: [
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { test: /\.js$/, loader: "source-map-loader" }
+        rules: [
+            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+            { test: /\.pug?$/, loader: "pug-loader" },
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
     },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/index.pug",
+            inject: false
+        })
+    ],
 
     externals: {
         // "react": "React",
         // "react-dom": "ReactDOM"
         "ndoojs": "ndoo",
+        "underscore": "_",
         "zepto": "Zepto"
     },
+
+    devServer: {
+        host: '0.0.0.0',
+        contentBase: '.'
+    }
 };
