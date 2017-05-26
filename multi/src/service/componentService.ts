@@ -8,6 +8,7 @@ import Util from './utilService';
 import * as Component from '../component';
 
 use(Util);
+let ndoo = Ndoo;
 
 interface componentParam {
   dataLabel: string,
@@ -83,8 +84,8 @@ export default class ComponentService {
    * 初始化组件
    */
   initComponent(rootEl?: HTMLElement) {
-    let $elem = $('[data-component]', rootEl ? rootEl : document.body);
-    let $components = $elem.slice(0).filter((item) => {
+    let $elem = $('[data-component]', rootEl || document.body);
+    let $components = $elem.get().filter((item) => {
       let $el = $(item);
       return $el.data('init') == 'inited' ? false : true;
     });

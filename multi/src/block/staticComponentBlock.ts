@@ -6,10 +6,12 @@ import use from '../library/use';
 import ComponentService from '../service/componentService';
 use(ComponentService);
 
+let ndoo = Ndoo;
+
 @Ndoo.Component('block.staticComponentBlock', Ndoo.RegType.Block, true)
 export default class StaticComponentBlock {
   static init(elem: HTMLElement, param: string) {
-    let componentService = ndoo.service<ComponentService>('common.componentService');
+    let componentService = Ndoo.service<ComponentService>('common.componentService');
     componentService.initComponent();
   }
 }

@@ -1,11 +1,14 @@
 import * as Ndoo from 'ndoojs';
 import use from '../library/use';
 
+
 import ReduxService from '../service/reduxService';
 import Util from '../service/utilService';
 use(ReduxService, Util);
 
 import * as Component from '../component';
+
+let ndoo = Ndoo;
 
 @Ndoo.Component('block.dynamicComponent', Ndoo.RegType.Block, true)
 export default class DynamicComponent {

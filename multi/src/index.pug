@@ -5,7 +5,7 @@ html
     meta(name="viewport" content="width=device-width,initial-scale=1.0")
     title index
   body
-    // .staticComponent(data-nblock-id="block/staticComponentBlock")
+    //- .staticComponent(data-nblock-id="block/staticComponentBlock")
       .headerText(data-component="componentName=Text&dataLabel=headerText")
       .counterBox1(data-component="componentName=Counter&dataLabel=counter[id]")
       .counterBox2(data-component="componentName=Counter&dataLabel=counter[id]")
@@ -23,6 +23,3 @@ html
       script(src=`${bowerPath}/underscore/underscore.js`)
       script(src=`${bowerPath}/zepto/zepto.js`)
       script(src=`${nodePath}/ndoojs/js/ndoo.js`)
-      script(src="./dist/bundle.js")
-      script.
-        ndoo.init('home/index');
