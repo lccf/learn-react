@@ -1,11 +1,14 @@
 // import { render as TextRender, default as TextReducer } from './text';
-import { createStore, combineReducers, applyMiddleware, Store, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, Store } from 'redux';
 import thunk from 'redux-thunk';
 import * as Ndoo from 'ndoojs';
 
 import use from '../library/use';
 import Util from './utilService';
+import compose from '../library/compose';
 import * as Component from '../component';
+
+import logger from '../library/logger';
 
 use(Util);
 let ndoo = Ndoo;
@@ -20,12 +23,6 @@ interface componentData extends componentParam {
   elem: any,
 }
 
-const logger = store => next => action => {
-  console.log('dispatching', action)
-  let result = next(action)
-  console.log('next state', store.getState())
-  return result
-}
 
 @Ndoo.Component('common.componentService', Ndoo.RegType.Service, true)
 export default class ComponentService {
@@ -77,11 +74,10 @@ export default class ComponentService {
     }
     this.reducerConfig = reducerConfig;
     let reducer = combineReducers(reducerConfig);
-    // let createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
-    // return createStoreWithMiddleware(reducer, initialState);
-    const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
+    // let createStoreWithMiddleware = applyMiddleware(thunk, logge
     return createStore(
-      reducer, composeEnhancers(
+      reducer,
+      compose(
         applyMiddleware(thunk, logger)
       )
     );

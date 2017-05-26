@@ -1,18 +1,12 @@
-import { createStore, combineReducers, applyMiddleware, Store, Reducer, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, Store, Reducer } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import * as Ndoo from 'ndoojs';
 
 import Util from './utilService';
-
 import createRootSaga from './sagas';
-
-const logger = store => next => action => {
-  console.log('dispatching', action)
-  let result = next(action)
-  console.log('next state', store.getState())
-  return result
-}
+import compose from '../library/compose';
+import logger from '../library/logger';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -56,12 +50,9 @@ export default class ReduxService {
       let initialState = {
         externalCallback: Util.externalCallback
       };
-      // let createStoreWithMiddleware = applyMiddleware(thunk, logger, sagaMiddleware)(createStore);
-      // this._store = createStoreWithMiddleware(newReducer, initialState);
-      const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
       this._store = createStore(
         newReducer,
-        composeEnhancers(
+        compose(
           applyMiddleware(thunk, logger, sagaMiddleware)
         )
       );

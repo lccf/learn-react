@@ -1,6 +1,6 @@
-let HtmlWebpackPlugin = require('html-webpack-plugin');
-
-module.exports = {
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+let webpackConfig = {
     entry: "./src/index.ts",
     output: {
         filename: "./dist/bundle.js"
@@ -41,3 +41,13 @@ module.exports = {
         contentBase: '.'
     }
 };
+
+const NODE_ENV = process.env.NODE_ENV;
+if (NODE_ENV != 'production') {
+    webpackConfig.plugins.push(new webpack.DefinePlugin({
+        REDUX_DEBUG: true,
+        REDUX_LOGGER: false
+    }));
+}
+
+module.exports = webpackConfig;
