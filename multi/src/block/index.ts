@@ -1,2 +1,2 @@
 export { default as StaticComponentBlock } from './staticComponentBlock';
-export { default as DynamicComponent } from './dynamicComponent';
+export { default as DynamicComponentBlock } from './dynamicComponentBlock';

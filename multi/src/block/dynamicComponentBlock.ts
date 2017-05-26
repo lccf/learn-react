@@ -10,8 +10,8 @@ import * as Component from '../component';
 
 let ndoo = Ndoo;
 
-@Ndoo.Component('block.dynamicComponent', Ndoo.RegType.Block, true)
-export default class DynamicComponent {
+@Ndoo.Component('block.dynamicComponentBlock', Ndoo.RegType.Block, true)
+export default class DynamicComponentBlock {
   static init(elem: HTMLElement, rawParam: string) {
     let { componentName, dataLabel } = Util.formatUrlParam(rawParam);
     let label = (<string>dataLabel).replace('[id]', ndoo.getPk());

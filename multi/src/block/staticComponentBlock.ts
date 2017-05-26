@@ -12,6 +12,6 @@ let ndoo = Ndoo;
 export default class StaticComponentBlock {
   static init(elem: HTMLElement, param: string) {
     let componentService = Ndoo.service<ComponentService>('common.componentService');
-    componentService.initComponent();
+    componentService.initComponent(elem);
   }
 }
