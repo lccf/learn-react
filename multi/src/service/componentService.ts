@@ -1,5 +1,5 @@
 // import { render as TextRender, default as TextReducer } from './text';
-import { createStore, combineReducers, applyMiddleware, Store } from 'redux';
+import { createStore, combineReducers, applyMiddleware, Store, compose } from 'redux';
 import thunk from 'redux-thunk';
 import * as Ndoo from 'ndoojs';
 
@@ -76,9 +76,15 @@ export default class ComponentService {
       reducerConfig[item.dataLabel] = Component[item.componentName+'Reducer'](item.dataLabel);
     }
     this.reducerConfig = reducerConfig;
-    let createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
     let reducer = combineReducers(reducerConfig);
-    return createStoreWithMiddleware(reducer, initialState);
+    // let createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
+    // return createStoreWithMiddleware(reducer, initialState);
+    const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
+    return createStore(
+      reducer, composeEnhancers(
+        applyMiddleware(thunk, logger)
+      )
+    );
   }
   /**
    * 初始化组件

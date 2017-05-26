@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, Store, Reducer } from 'redux';
+import { createStore, combineReducers, applyMiddleware, Store, Reducer, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import * as Ndoo from 'ndoojs';
@@ -51,8 +51,15 @@ export default class ReduxService {
       let initialState = {
         externalCallback: Util.externalCallback
       };
-      let createStoreWithMiddleware = applyMiddleware(thunk, logger, sagaMiddleware)(createStore);
-      this._store = createStoreWithMiddleware(newReducer, initialState);
+      // let createStoreWithMiddleware = applyMiddleware(thunk, logger, sagaMiddleware)(createStore);
+      // this._store = createStoreWithMiddleware(newReducer, initialState);
+      const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] || compose;
+      this._store = createStore(
+        newReducer,
+        composeEnhancers(
+          applyMiddleware(thunk, logger, sagaMiddleware)
+        )
+      );
       sagaMiddleware.run(rootSaga);
     }
     else {

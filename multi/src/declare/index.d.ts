@@ -18,3 +18,5 @@ interface BGSiteConstructor {
 }
 
 declare var BGSite: BGSiteConstructor
+
+declare var __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
