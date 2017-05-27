@@ -5,7 +5,7 @@ import * as Ndoo from 'ndoojs';
 
 import Util from './utilService';
 
-import rootSaga from './sagas';
+import createRootSaga from './sagas';
 
 const logger = store => next => action => {
   console.log('dispatching', action)
@@ -24,6 +24,11 @@ export default class ReduxService {
   private _store: Store<{ [key: string]: any }>;
   get store() {
     return this._store
+  }
+
+  private _saga: { [key: string]: any } = {};
+  get saga() {
+    return this._saga;
   }
 
   /**
@@ -60,6 +65,8 @@ export default class ReduxService {
           applyMiddleware(thunk, logger, sagaMiddleware)
         )
       );
+      let saga = this.saga;
+      let rootSaga = createRootSaga(saga);
       sagaMiddleware.run(rootSaga);
     }
     else {
@@ -77,6 +84,24 @@ export default class ReduxService {
    */
   hasReducer(key) {
     return this._reducerConfig[key];
+  }
+
+  /**
+   * 添加saga到集合中
+   */
+  addSaga(sagas: any) {
+    let _saga = this._saga;
+    for (let action in sagas) {
+      let saga = sagas[action];
+      if (_saga[action]) {
+        _saga[action].push(saga);
+      }
+      else {
+        _saga[action] = [saga];
+      }
+    }
+    return this._saga;
+    // return this._saga.push(saga);
   }
 
   static _instance: ReduxService;
