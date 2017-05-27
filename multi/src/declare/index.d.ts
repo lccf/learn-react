@@ -19,5 +19,10 @@ interface BGSiteConstructor {
 
 declare var BGSite: BGSiteConstructor;
 
+interface SystemConstructor {
+  import: <T>(module: string) => Promise<T>;
+}
+declare var System: SystemConstructor;
+
 declare var REDUX_DEBUG: boolean;
 declare var REDUX_LOGGER: boolean;

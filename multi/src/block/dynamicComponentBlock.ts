@@ -15,11 +15,13 @@ export default class DynamicComponentBlock {
   static init(elem: HTMLElement, rawParam: string) {
     let { componentName, dataLabel } = Util.formatUrlParam(rawParam);
     let label = (<string>dataLabel).replace('[id]', ndoo.getPk());
-    let reduxService = ndoo.service<ReduxService>('common.reduxService');
-    let store = reduxService.addReducer(label, Component[`${<string>componentName}Reducer`](label));
-    if (Component[`${<string>componentName}Saga`]) {
-      reduxService.addSaga(Component[`${<string>componentName}Saga`](label));
-    }
-    Component.render(elem, Component[<string>componentName], store, label);
+    Component[`${componentName}Load`]().then((componentHandle: any) => {
+      let reduxService = ndoo.service<ReduxService>('common.reduxService');
+      let store = reduxService.addReducer(label, componentHandle[`${<string>componentName}Reducer`](label));
+      if (componentHandle[`${<string>componentName}Saga`]) {
+        reduxService.addSaga(componentHandle[`${<string>componentName}Saga`](label));
+      }
+      Component.render(elem, componentHandle[<string>componentName], store, label);
+    });
   }
 }

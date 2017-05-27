@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 let webpackConfig = {
     entry: "./src/index.ts",
     output: {
-        filename: "./dist/bundle.js"
+        filename: "./dist/[name].js"
     },
 
     // Enable sourcemaps for debugging webpack's output.
