@@ -6,21 +6,15 @@ export function *incrementAsync(action) {
     yield put(Object.assign({}, action, {type: 'ACTION_INCREMENT'}));
 }
 
-export function *counterIncrementAsync(action: any) {
-  yield *incrementAsync(action);
+function wrapFunction(dataLabel: string, saga: Function) {
+  return function *(action: any) {
+    if (action.payload.dataLabel == dataLabel)
+      yield *saga(action)
+  }
 }
 
 export default function (dataLabel: string) {
   return {
-    'ACTION_INCREMENT_ASYNC': function *(action: any) {
-      if (action.payload.dataLabel == dataLabel) {
-        yield *incrementAsync(action);
-      }
-    }
+    'ACTION_INCREMENT_ASYNC': wrapFunction(dataLabel, incrementAsync)
   }
-  // return function *(action: any) {
-  //   if (action.type == 'ACTION_INCREMENT_ASYNC' && action.payload.dataLabel == dataLabel) {
-  //     yield *incrementAsync(action);
-  //   }
-  // }
 }
